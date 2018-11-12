@@ -1,8 +1,26 @@
 # gmatrix
 
-A simple library for manipulating matrices
+A simple library for geometrically manipulating matrices
+
+### Install
+
+```
+npm install gmatrix
+```
 
 ### Usage
+
+```js
+const gmatrix = require("gmatrix");
+
+const myMatrix = gmatrix([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]);
+// myMatrix is now equipped with with geometric functions detailed below
+```
+
 
 ```js
 const json = matrix.toJSON();
