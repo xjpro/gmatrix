@@ -6,11 +6,11 @@
 const copy = rows => [...rows.map(row => [...row])];
 
 /**
- * Return a new matrix that's a copy of the given one
+ * Return a new gmatrix that's a copy of the given one
  * @param rows
  * @returns {{toJSON, forEach, forEachElement, rotateLeft, rotateRight, rotate180, flipHorizontal, flipVertical}}
  */
-const clone = rows => matrix(copy(rows));
+const clone = rows => gmatrix(copy(rows));
 
 /**
  * Iterate over rows
@@ -37,7 +37,7 @@ const forEachElement = (rows, fn) => {
 };
 
 /**
- * Return a new matrix rotated 90 degrees left from given one
+ * Return a new gmatrix rotated 90 degrees left from given one
  * Columns, in reverse order, become rows.
  * @param rows
  * @returns {{toJSON, rotateLeft, rotateRight, rotate180}}
@@ -55,11 +55,11 @@ const rotateLeft = rows => {
 		rotated.push(rotatedRow);
 	}
 
-	return matrix(rotated);
+	return gmatrix(rotated);
 };
 
 /**
- * Return a new matrix rotated 90 degrees right from given one
+ * Return a new gmatrix rotated 90 degrees right from given one
  * Columns, in order but reversed by row, become rows.
  * @param rows
  * @returns {{toJSON, rotateLeft, rotateRight, rotate180}}
@@ -77,34 +77,34 @@ const rotateRight = rows => {
 		rotated.push(rotatedRow);
 	}
 
-	return matrix(rotated);
+	return gmatrix(rotated);
 };
 
 /**
- * Return a new matrix rotated 180 degrees from given one
+ * Return a new gmatrix rotated 180 degrees from given one
  * Reverse elements of all rows and the order of all rows
  * @param rows
  * @returns {{toJSON, rotateLeft, rotateRight, rotate180}}
  */
-const rotate180 = rows => matrix([...rows.map(row => [...row].reverse())].reverse());
+const rotate180 = rows => gmatrix([...rows.map(row => [...row].reverse())].reverse());
 
 /**
- * Return a new matrix which is flipped over the horizontal axis from given one
+ * Return a new gmatrix which is flipped over the horizontal axis from given one
  * Reverse the order of all rows
  * @param rows
  * @returns {{toJSON, rotateLeft, rotateRight, rotate180}}
  */
-const flipHorizontal = rows => matrix([...rows.map(row => [...row])].reverse());
+const flipHorizontal = rows => gmatrix([...rows.map(row => [...row])].reverse());
 
 /**
- * Return a new matrix which is flipped over the vertical axis from the given one
+ * Return a new gmatrix which is flipped over the vertical axis from the given one
  * Reverse the order of elements in all rows
  * @param rows
  * @returns {{toJSON, rotateLeft, rotateRight, rotate180}}
  */
-const flipVertical = rows => matrix([...rows.map(row => [...row].reverse())]);
+const flipVertical = rows => gmatrix([...rows.map(row => [...row].reverse())]);
 
-const matrix = (rows) => {
+const gmatrix = (rows) => {
 	if (!rows) {
 		rows = [];
 	}
@@ -122,4 +122,4 @@ const matrix = (rows) => {
 	};
 };
 
-module.exports = matrix;
+module.exports = gmatrix;
