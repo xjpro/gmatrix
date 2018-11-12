@@ -1,4 +1,18 @@
 /**
+ * Copy a 2 dimensional array
+ * @param rows
+ * @returns
+ */
+const copy = rows => [...rows.map(row => [...row])];
+
+/**
+ * Return a new matrix that's a copy of the given one
+ * @param rows
+ * @returns {{toJSON, forEach, forEachElement, rotateLeft, rotateRight, rotate180, flipHorizontal, flipVertical}}
+ */
+const clone = rows => matrix(copy(rows));
+
+/**
  * Iterate over rows
  * @param rows
  * @param fn callback that will receive row and index of row
@@ -96,7 +110,8 @@ const matrix = (rows) => {
 	}
 
 	return {
-		toJSON: () => rows,
+		toJSON: () => copy(rows),
+		clone: () => clone(rows),
 		forEach: fn => forEach(rows, fn),
 		forEachElement: fn => forEachElement(rows, fn),
 		rotateLeft: () => rotateLeft(rows),
