@@ -123,6 +123,10 @@ class GeometricMatrix {
 		return require("./clone")(this);
 	}
 
+	subMatrix(startPosition, width, height) {
+		return require("./subMatrix")(this, startPosition, width, height);
+	}
+
 	forEach(fn) {
 		return forEach(this.rows, fn);
 	}

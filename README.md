@@ -51,6 +51,13 @@ const equality = a.equals(b);
 const clone = myMatrix.clone();
 // clone is a new matrix that's a copy of the original
 ```
+#### subMatrix
+```js
+const sub = myMatrix.subMatrix(4, 2, 2);
+// sub is a new matrix with 2x2 dimensions starting at position 4 of the original
+// [[5, 6],
+//  [8, 9]]
+```
 #### forEach
 ```js
 myMatrix.forEach((row, rowIndex) => {
