@@ -1,6 +1,6 @@
 const gmatrix = require("./gmatrix");
 
-const subMatrix = (matrix, startPosition, width, height) => {
+const subMatrix = (matrix, startPosition, width = 1, height = 1) => {
 	const json = matrix.toJSON();
 
 	const matrixWidth = json[0].length;

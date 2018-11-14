@@ -54,4 +54,25 @@ describe("subMatrix", () => {
 			[18, 19]
 		]);
 	});
+
+	test("can create a 1x1 matrix", () => {
+		const b = a.subMatrix(7, 1, 1);
+		expect(b.toJSON()).toMatchObject([
+			[7]
+		]);
+	});
+
+	test("uses 1 for default height", () => {
+		const b = a.subMatrix(7, 2);
+		expect(b.toJSON()).toMatchObject([
+			[7, 8]
+		]);
+	});
+
+	test("uses 1 for default width", () => {
+		const b = a.subMatrix(7);
+		expect(b.toJSON()).toMatchObject([
+			[7]
+		]);
+	});
 });
