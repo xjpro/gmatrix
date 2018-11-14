@@ -10,7 +10,7 @@ const copy = rows => [...rows.map(row => [...row])];
  * @param rows
  * @returns {{toJSON, forEach, forEachElement, rotateLeft, rotateRight, rotate180, flipHorizontal, flipVertical}}
  */
-const clone = rows => gmatrix(copy(rows));
+const clone = matrix => gmatrix(matrix.toJSON());
 
 /**
  * Checks if two matrices have equal values
@@ -147,23 +147,53 @@ const flipHorizontal = rows => gmatrix([...rows.map(row => [...row])].reverse())
  */
 const flipVertical = rows => gmatrix([...rows.map(row => [...row].reverse())]);
 
-const gmatrix = (rows) => {
-	if (!rows) {
-		rows = [];
+class GeometricMatrix {
+	constructor(rows) {
+		this.rows = rows;
 	}
 
-	return {
-		toJSON: () => copy(rows),
-		equals: other => equals(rows, other.toJSON()),
-		clone: () => clone(rows),
-		forEach: fn => forEach(rows, fn),
-		forEachElement: fn => forEachElement(rows, fn),
-		rotateLeft: () => rotateLeft(rows),
-		rotateRight: () => rotateRight(rows),
-		rotate180: () => rotate180(rows),
-		flipHorizontal: () => flipHorizontal(rows),
-		flipVertical: () => flipVertical(rows)
-	};
-};
+	toJSON() {
+		return copy(this.rows);
+	}
+
+	equals(other) {
+		return equals(this.rows, other.toJSON());
+	}
+
+	clone() {
+		return clone(this);
+	}
+
+	forEach(fn) {
+		return forEach(this.rows, fn);
+	}
+
+	forEachElement(fn) {
+		return forEachElement(this.rows, fn);
+	}
+
+	rotateLeft() {
+		return rotateLeft(this.rows);
+	}
+
+	rotateRight() {
+		return rotateRight(this.rows);
+	}
+
+	rotate180() {
+		return rotate180(this.rows);
+	}
+
+	flipHorizontal() {
+		return flipHorizontal(this.rows);
+	}
+
+	flipVertical() {
+		return flipVertical(this.rows);
+	}
+
+}
+
+const gmatrix = (rows) => (new GeometricMatrix(rows));
 
 module.exports = gmatrix;

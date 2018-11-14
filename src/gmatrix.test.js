@@ -21,7 +21,7 @@ describe("clone", () => {
 	test("creates a new matrix that matches the original", () => {
 		const clone = m.clone();
 		expect(clone === m).toEqual(false);
-		expect(clone).not.toMatchObject(m);
+		expect(clone).not.toBe(m);
 		expect(clone.equals(m)).toEqual(true);
 	});
 });
