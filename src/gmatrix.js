@@ -6,47 +6,6 @@
 const copy = rows => [...rows.map(row => [...row])];
 
 /**
- * Return a new gmatrix that's a copy of the given one
- * @param rows
- * @returns {{toJSON, forEach, forEachElement, rotateLeft, rotateRight, rotate180, flipHorizontal, flipVertical}}
- */
-const clone = matrix => gmatrix(matrix.toJSON());
-
-/**
- * Checks if two matrices have equal values
- * @param a
- * @param b
- * @returns {boolean} true if equal
- */
-const equals = (a, b) => {
-	const rowCount = a.length;
-
-	// Check row length
-	if (rowCount !== b.length) {
-		return false;
-	}
-
-	let equals = true;
-	for (let r = 0; r < rowCount; r++) {
-		const columnCount = a[r].length;
-
-		// Check column length
-		if (columnCount !== b[r].length) {
-			equals = false;
-			break;
-		}
-
-		for (let c = 0; c < columnCount; c++) {
-			if (a[r][c] !== b[r][c]) {
-				equals = false;
-				break;
-			}
-		}
-	}
-	return equals;
-};
-
-/**
  * Iterate over rows
  * @param rows
  * @param fn callback that will receive row and index of row
@@ -157,11 +116,11 @@ class GeometricMatrix {
 	}
 
 	equals(other) {
-		return equals(this.rows, other.toJSON());
+		return require("./equals")(this, other);
 	}
 
 	clone() {
-		return clone(this);
+		return require("./clone")(this);
 	}
 
 	forEach(fn) {
