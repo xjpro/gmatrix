@@ -118,6 +118,10 @@ class GeometricMatrix {
     return require("./forEachRow")(this, fn);
   }
 
+  map(fn) {
+    return require("./map")(this, fn);
+  }
+
   rotateLeft() {
     return rotateLeft(this.rows);
   }

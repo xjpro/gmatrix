@@ -82,15 +82,26 @@ const surrounding = myMatrix.surrounding(12);
 ```js
 myMatrix.forEach((element, index, rowIndex, columnIndex) => {
   // do something with element
-  // also given element's index, row index, and column index
+  // given element's index, row index, and column index
+  // return false to break early
 });
 ```
 #### forEachRow
 ```js
 myMatrix.forEachRow((row, rowIndex) => {
   // do something with row of elements
-  // also given row's index
+  // given row's index
+  // return false to break early
 });
+```
+#### map
+```js
+const results = myMatrix.map((element, index, rowIndex, columnIndex) => {
+  // similar to forEach but returns an array of results based on what you return in the callback
+  // given element's index, row index, and column index
+  return element; // by returning element we will be creating an flattened array of the matrix values
+});
+// results is [0, 1, 2, 3, 4, 5, 6, 7, 8, etc...]
 ```
 #### rotateLeft
 ```js
