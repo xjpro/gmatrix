@@ -11,13 +11,13 @@ const copy = rows => [...rows.map(row => [...row])];
  * @param fn callback that will receive row and index of row
  */
 const forEach = (rows, fn) => {
-	const rowCount = rows.length;
-	for (let r = 0; r < rowCount; r++) {
-		const returnValue = fn(rows[r]);
-		if (returnValue === false) {
-			break;
-		}
-	}
+  const rowCount = rows.length;
+  for (let r = 0; r < rowCount; r++) {
+    const returnValue = fn(rows[r]);
+    if (returnValue === false) {
+      break;
+    }
+  }
 };
 
 /**
@@ -26,16 +26,16 @@ const forEach = (rows, fn) => {
  * @param fn callback that will receive element, row index of element, and column index of element
  */
 const forEachElement = (rows, fn) => {
-	const rowCount = rows.length;
-	for (let r = 0; r < rowCount; r++) {
-		const columnCount = rows[r].length;
-		for (let c = 0; c < columnCount; c++) {
-			const returnValue = fn(rows[r][c], r, c);
-			if (returnValue === false) {
-				break;
-			}
-		}
-	}
+  const rowCount = rows.length;
+  for (let r = 0; r < rowCount; r++) {
+    const columnCount = rows[r].length;
+    for (let c = 0; c < columnCount; c++) {
+      const returnValue = fn(rows[r][c], r, c);
+      if (returnValue === false) {
+        break;
+      }
+    }
+  }
 };
 
 /**
@@ -45,19 +45,19 @@ const forEachElement = (rows, fn) => {
  * @returns {{toJSON, rotateLeft, rotateRight, rotate180}}
  */
 const rotateLeft = rows => {
-	const rotated = [];
-	const rowLastIndex = rows.length - 1;
-	const colLastIndex = rows[0].length - 1;
+  const rotated = [];
+  const rowLastIndex = rows.length - 1;
+  const colLastIndex = rows[0].length - 1;
 
-	for (let c = colLastIndex; c >= 0; c--) {
-		const rotatedRow = [];
-		for (let r = 0; r <= rowLastIndex; r++) {
-			rotatedRow.push(rows[r][c]);
-		}
-		rotated.push(rotatedRow);
-	}
+  for (let c = colLastIndex; c >= 0; c--) {
+    const rotatedRow = [];
+    for (let r = 0; r <= rowLastIndex; r++) {
+      rotatedRow.push(rows[r][c]);
+    }
+    rotated.push(rotatedRow);
+  }
 
-	return gmatrix(rotated);
+  return gmatrix(rotated);
 };
 
 /**
@@ -67,19 +67,19 @@ const rotateLeft = rows => {
  * @returns {{toJSON, rotateLeft, rotateRight, rotate180}}
  */
 const rotateRight = rows => {
-	const rotated = [];
-	const rowLastIndex = rows.length - 1;
-	const colLastIndex = rows[0].length - 1;
+  const rotated = [];
+  const rowLastIndex = rows.length - 1;
+  const colLastIndex = rows[0].length - 1;
 
-	for (let c = 0; c <= colLastIndex; c++) {
-		const rotatedRow = [];
-		for (let r = rowLastIndex; r >= 0; r--) {
-			rotatedRow.push(rows[r][c]);
-		}
-		rotated.push(rotatedRow);
-	}
+  for (let c = 0; c <= colLastIndex; c++) {
+    const rotatedRow = [];
+    for (let r = rowLastIndex; r >= 0; r--) {
+      rotatedRow.push(rows[r][c]);
+    }
+    rotated.push(rotatedRow);
+  }
 
-	return gmatrix(rotated);
+  return gmatrix(rotated);
 };
 
 /**
@@ -107,56 +107,55 @@ const flipHorizontal = rows => gmatrix([...rows.map(row => [...row])].reverse())
 const flipVertical = rows => gmatrix([...rows.map(row => [...row].reverse())]);
 
 class GeometricMatrix {
-	constructor(rows) {
-		this.rows = rows;
-	}
+  constructor(rows) {
+    this.rows = rows;
+  }
 
-	toJSON() {
-		return copy(this.rows);
-	}
+  toJSON() {
+    return copy(this.rows);
+  }
 
-	equals(other) {
-		return require("./equals")(this, other);
-	}
+  equals(other) {
+    return require("./equals")(this, other);
+  }
 
-	clone() {
-		return require("./clone")(this);
-	}
+  clone() {
+    return require("./clone")(this);
+  }
 
-	subMatrix(startPosition, width, height) {
-		return require("./subMatrix")(this, startPosition, width, height);
-	}
+  subMatrix(startPosition, width, height) {
+    return require("./subMatrix")(this, startPosition, width, height);
+  }
 
-	forEach(fn) {
-		return forEach(this.rows, fn);
-	}
+  forEach(fn) {
+    return forEach(this.rows, fn);
+  }
 
-	forEachElement(fn) {
-		return forEachElement(this.rows, fn);
-	}
+  forEachElement(fn) {
+    return forEachElement(this.rows, fn);
+  }
 
-	rotateLeft() {
-		return rotateLeft(this.rows);
-	}
+  rotateLeft() {
+    return rotateLeft(this.rows);
+  }
 
-	rotateRight() {
-		return rotateRight(this.rows);
-	}
+  rotateRight() {
+    return rotateRight(this.rows);
+  }
 
-	rotate180() {
-		return rotate180(this.rows);
-	}
+  rotate180() {
+    return rotate180(this.rows);
+  }
 
-	flipHorizontal() {
-		return flipHorizontal(this.rows);
-	}
+  flipHorizontal() {
+    return flipHorizontal(this.rows);
+  }
 
-	flipVertical() {
-		return flipVertical(this.rows);
-	}
-
+  flipVertical() {
+    return flipVertical(this.rows);
+  }
 }
 
-const gmatrix = (rows) => (new GeometricMatrix(rows));
+const gmatrix = rows => new GeometricMatrix(rows);
 
 module.exports = gmatrix;

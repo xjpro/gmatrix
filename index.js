@@ -1,1 +1,1 @@
-module.exports = require("src/gmatrix");
+module.exports = require("./src/gmatrix");
