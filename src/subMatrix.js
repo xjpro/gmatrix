@@ -6,30 +6,17 @@ const subMatrix = (matrix, startPosition, width = 1, height = 1) => {
   const matrixWidth = json[0].length;
 
   const startRow = parseInt(startPosition / matrixWidth);
-
-  let endRow;
-  if (startRow + height > json.length) {
-    // Restrict selection to within bounds of matrix
-    endRow = json.length;
-  } else {
-    endRow = startRow + height;
-  }
+  const endRow = startRow + height;
 
   const startColumn = startPosition % matrixWidth;
-
-  let endColumn;
-  if (startColumn + width > matrixWidth) {
-    // Restrict selection to within bounds of matrix
-    endColumn = matrixWidth;
-  } else {
-    endColumn = startColumn + width;
-  }
+  const endColumn = startColumn + width;
 
   const subRows = [];
   for (let r = startRow; r < endRow; r++) {
+    const row = json[r];
     const subRow = [];
     for (let c = startColumn; c < endColumn; c++) {
-      subRow.push(json[r][c]);
+      subRow.push(row ? row[c] : undefined);
     }
     subRows.push(subRow);
   }

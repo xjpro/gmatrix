@@ -26,14 +26,14 @@ describe("subMatrix", () => {
     expect(b.toJSON()).toMatchObject([[12, 13, 14], [17, 18, 19], [22, 23, 24]]);
   });
 
-  test("does not exceed the bounds of the matrix when height is too large", () => {
+  test("sets values outside bounds of matrix height to undefined", () => {
     const b = a.subMatrix(16, 3, 3);
-    expect(b.toJSON()).toMatchObject([[16, 17, 18], [21, 22, 23]]);
+    expect(b.toJSON()).toMatchObject([[16, 17, 18], [21, 22, 23], [undefined, undefined, undefined]]);
   });
 
-  test("does not exceed the bounds of the matrix when width is too large", () => {
+  test("sets values outside bounds of matrix width to undefined", () => {
     const b = a.subMatrix(8, 3, 3);
-    expect(b.toJSON()).toMatchObject([[8, 9], [13, 14], [18, 19]]);
+    expect(b.toJSON()).toMatchObject([[8, 9, undefined], [13, 14, undefined], [18, 19, undefined]]);
   });
 
   test("can create a 1x1 matrix", () => {
