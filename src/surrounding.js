@@ -1,15 +1,15 @@
 const gmatrix = require("./gmatrix");
 
-const subMatrix = (matrix, startIndex, width = 1, height = 1) => {
+const surrounding = (matrix, centerIndex) => {
   const json = matrix.toJSON();
 
   const matrixWidth = json[0].length;
 
-  const startRow = parseInt(startIndex / matrixWidth);
-  const endRow = startRow + height;
+  const startRow = parseInt(centerIndex / matrixWidth) - 1;
+  const endRow = startRow + 3;
 
-  const startColumn = startIndex % matrixWidth;
-  const endColumn = startColumn + width;
+  const startColumn = (centerIndex % matrixWidth) - 1;
+  const endColumn = startColumn + 3;
 
   const subRows = [];
   for (let r = startRow; r < endRow; r++) {
@@ -23,4 +23,4 @@ const subMatrix = (matrix, startIndex, width = 1, height = 1) => {
   return gmatrix(subRows);
 };
 
-module.exports = subMatrix;
+module.exports = surrounding;

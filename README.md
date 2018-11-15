@@ -21,9 +21,11 @@ For browsers:
 In either case, create a matrix:
 ```js
 const myMatrix = matrix([
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
+  [0, 1, 2, 3, 4],
+  [5, 6, 7, 8, 9],
+  [10, 11, 12, 13, 14],
+  [15, 16, 17, 18, 19],
+  [20, 21, 22, 23, 24]
 ]);
 // myMatrix is now equipped with the geometric functions detailed below
 ```
@@ -53,10 +55,18 @@ const clone = myMatrix.clone();
 ```
 #### subMatrix
 ```js
-const sub = myMatrix.subMatrix(4, 2, 2);
-// sub is a new matrix with 2x2 dimensions starting at position 4 of the original
+const sub = myMatrix.subMatrix(5, 2, 2);
+// sub is a new 2x2 matrix starting from index 4
 // [[5, 6],
-//  [8, 9]]
+//  [10, 11]]
+```
+#### surrounding
+```js
+const surrounding = myMatrix.surrounding(12);
+// surrounding is a new 3x3 matrix containing the elements that surrounded index 4
+// [[6, 7, 8],
+//  [11, 12, 13],
+//  [16, 17, 18]]
 ```
 #### forEach
 ```js

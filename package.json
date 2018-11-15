@@ -6,11 +6,11 @@
   "scripts": {
     "build": "babel src/gmatrix.js -o dist/gmatrix.min.js",
     "test": "jest",
-    "pretty": "node node_modules/prettier/bin-prettier.js --write \"./src/**/*.js\" && git add ."
+    "pretty": "node node_modules/prettier/bin-prettier.js --write \"./src/**/*.js\""
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pretty && npm run build"
+      "pre-commit": "npm run pretty && npm run build && git add ."
     }
   },
   "repository": {

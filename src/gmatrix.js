@@ -127,6 +127,10 @@ class GeometricMatrix {
     return require("./subMatrix")(this, startPosition, width, height);
   }
 
+  surrounding(centerIndex) {
+    return require("./surrounding")(this, centerIndex);
+  }
+
   forEach(fn) {
     return forEach(this.rows, fn);
   }
