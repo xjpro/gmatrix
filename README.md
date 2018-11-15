@@ -97,11 +97,22 @@ myMatrix.forEachRow((row, rowIndex) => {
 #### map
 ```js
 const results = myMatrix.map((element, index, rowIndex, columnIndex) => {
-  // similar to forEach but returns an array of results based on what you return in the callback
+  // similar to forEach but returns a 2d array of results based on what you return in the callback
+  // given element's index, row index, and column index
+  return element + 1;
+});
+// results is 2d array of each return 
+// [[1, 2, 3, 4, 5], [5, 6, 7, 8, 9], etc...]
+```
+#### flatMap
+```js
+const results = myMatrix.flatMap((element, index, rowIndex, columnIndex) => {
+  // similar to forEach but returns a flattened array of results based on what you return in the callback
   // given element's index, row index, and column index
   return element; // by returning element we will be creating an flattened array of the matrix values
 });
-// results is [0, 1, 2, 3, 4, 5, 6, 7, 8, etc...]
+// results is flattened array of each return
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, etc...]
 ```
 #### rotateLeft
 ```js

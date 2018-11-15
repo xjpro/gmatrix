@@ -2,12 +2,12 @@ const matrix = require("./gmatrix");
 
 const arrayMatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
-describe("map", () => {
+describe("flatMap", () => {
   const a = matrix(arrayMatrix);
 
   test("maps over every element", () => {
     const callback = jest.fn();
-    a.map(callback);
+    a.flatMap(callback);
     expect(callback.mock.calls.length).toEqual(9);
     for (let i = 0; i < 9; i++) {
       const call = callback.mock.calls[i];
@@ -17,7 +17,7 @@ describe("map", () => {
 
   test("callback includes index, row index, and column index", () => {
     const callback = jest.fn();
-    a.map(callback);
+    a.flatMap(callback);
     for (let i = 0; i < 9; i++) {
       const call = callback.mock.calls[i];
       expect(call[1]).toEqual(i); // index
@@ -26,10 +26,10 @@ describe("map", () => {
     }
   });
 
-  test("returns 2d array of results", () => {
-    const results = a.map(element => {
-      return element + 1;
+  test("returns flattened array of results", () => {
+    const results = a.flatMap(element => {
+      return element;
     });
-    expect(results).toMatchObject([[2, 3, 4], [5, 6, 7], [8, 9, 10]]);
+    expect(results).toMatchObject([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 });

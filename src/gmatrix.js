@@ -122,6 +122,10 @@ class GeometricMatrix {
     return require("./map")(this, fn);
   }
 
+  flatMap(fn) {
+    return require("./flatMap")(this, fn);
+  }
+
   rotateLeft() {
     return rotateLeft(this.rows);
   }
