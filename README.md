@@ -45,6 +45,16 @@ const width = myMatrix.width();
 const height = myMatrix.height();
 // height is 5
 ```
+#### get
+```js
+// by index
+const value = myMatrix.get(3); 
+// 2
+
+// or by row & column index
+const value = myMatrix.get(0, 3);
+// 3
+```
 #### equals
 ```js
 const a = matrix([

@@ -80,6 +80,9 @@ class GeometricMatrix {
     } else {
       this.rows = rows;
     }
+
+    this._width = this.rows.length;
+    this._height = this.rows.length > 0 ? this.rows[0].length : 0;
   }
 
   toJSON() {
@@ -87,11 +90,23 @@ class GeometricMatrix {
   }
 
   width() {
-    return this.rows.length;
+    return this._width;
   }
 
   height() {
-    return this.rows.length > 0 ? this.rows[0].length : 0;
+    return this._height;
+  }
+
+  get(index, columnIndex) {
+    // If second arg provided, get by (row, column)
+    if (typeof columnIndex !== "undefined") {
+      const row = this.rows[index];
+      return row ? row[columnIndex] : undefined;
+    }
+
+    // Otherwise get by index
+    const row = this.rows[parseInt(index / this._width)];
+    return row ? row[index % this._width] : undefined;
   }
 
   equals(other) {
