@@ -6,39 +6,6 @@
 const copy = rows => [...rows.map(row => [...row])];
 
 /**
- * Iterate over rows
- * @param rows
- * @param fn callback that will receive row and index of row
- */
-const forEach = (rows, fn) => {
-  const rowCount = rows.length;
-  for (let r = 0; r < rowCount; r++) {
-    const returnValue = fn(rows[r]);
-    if (returnValue === false) {
-      break;
-    }
-  }
-};
-
-/**
- * Iterate over elements
- * @param rows
- * @param fn callback that will receive element, row index of element, and column index of element
- */
-const forEachElement = (rows, fn) => {
-  const rowCount = rows.length;
-  for (let r = 0; r < rowCount; r++) {
-    const columnCount = rows[r].length;
-    for (let c = 0; c < columnCount; c++) {
-      const returnValue = fn(rows[r][c], r, c);
-      if (returnValue === false) {
-        break;
-      }
-    }
-  }
-};
-
-/**
  * Return a new gmatrix rotated 90 degrees left from given one
  * Columns, in reverse order, become rows.
  * @param rows
@@ -144,11 +111,11 @@ class GeometricMatrix {
   }
 
   forEach(fn) {
-    return forEach(this.rows, fn);
+    return require("./forEach")(this, fn);
   }
 
-  forEachElement(fn) {
-    return forEachElement(this.rows, fn);
+  forEachRow(fn) {
+    return require("./forEachRow")(this, fn);
   }
 
   rotateLeft() {

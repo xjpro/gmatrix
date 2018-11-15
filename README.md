@@ -80,16 +80,16 @@ const surrounding = myMatrix.surrounding(12);
 ```
 #### forEach
 ```js
-myMatrix.forEach((row, rowIndex) => {
-  // do something with row of elements
-  // also given row's index
+myMatrix.forEach((element, index, rowIndex, columnIndex) => {
+  // do something with element
+  // also given element's index, row index, and column index
 });
 ```
-#### forEachElement
+#### forEachRow
 ```js
-myMatrix.forEachElement((element, rowIndex, columnIndex) => {
-  // do something with element
-  // also given element's row and column indices
+myMatrix.forEachRow((row, rowIndex) => {
+  // do something with row of elements
+  // also given row's index
 });
 ```
 #### rotateLeft
