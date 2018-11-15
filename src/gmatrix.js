@@ -108,11 +108,23 @@ const flipVertical = rows => gmatrix([...rows.map(row => [...row].reverse())]);
 
 class GeometricMatrix {
   constructor(rows) {
-    this.rows = rows;
+    if (!rows) {
+      this.rows = [];
+    } else {
+      this.rows = rows;
+    }
   }
 
   toJSON() {
     return copy(this.rows);
+  }
+
+  width() {
+    return this.rows.length;
+  }
+
+  height() {
+    return this.rows.length > 0 ? this.rows[0].length : 0;
   }
 
   equals(other) {

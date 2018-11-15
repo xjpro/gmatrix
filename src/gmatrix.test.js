@@ -10,3 +10,27 @@ describe("toJSON", () => {
     expect(json).toMatchObject(arrayMatrix);
   });
 });
+
+describe("width", () => {
+  test("gives correct width for 3x3 matrix", () => {
+    const m = matrix(arrayMatrix);
+    expect(m.width()).toEqual(3);
+  });
+
+  test("gives correct width for 0x0 matrix", () => {
+    const m = matrix([]);
+    expect(m.width()).toEqual(0);
+  });
+});
+
+describe("height", () => {
+  test("gives correct height for 3x3 matrix", () => {
+    const m = matrix(arrayMatrix);
+    expect(m.height()).toEqual(3);
+  });
+
+  test("gives correct width for 0x0 matrix", () => {
+    const m = matrix([]);
+    expect(m.height()).toEqual(0);
+  });
+});

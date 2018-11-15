@@ -35,6 +35,16 @@ const myMatrix = matrix([
 const json = myMatrix.toJSON();
 // json is a two dimensional array of the matrix
 ```
+#### width
+```js
+const width = myMatrix.width();
+// width is 5
+```
+#### height
+```js
+const height = myMatrix.height();
+// height is 5
+```
 #### equals
 ```js
 const a = matrix([
